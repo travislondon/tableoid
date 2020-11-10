@@ -47,7 +47,7 @@ const Table = (props: any) => {
     setPage(page - 1)
   }
 
-  const pages = Math.ceil(displayData.length / resultsPerPage)
+  const pages = Math.ceil(filteredData.length / resultsPerPage)
 
   return (
     <>
