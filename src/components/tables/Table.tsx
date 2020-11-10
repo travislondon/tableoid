@@ -3,9 +3,16 @@ import { Styles } from '../../styles/Styles'
 import { Column } from './data/Column'
 import { ColumnFilter, ORDER } from './data/ColumnConfiguration'
 import HeaderColumn from './HeaderColumn'
+import Row from './Row'
 
 const Table = (props: any) => {
-  const { columns, data, defaultConfiguration, resultsPerPage } = props
+  const {
+    columns,
+    data,
+    defaultConfiguration,
+    resultsPerPage,
+    expansionComponent
+  } = props
   const [page, setPage] = useState(1)
   const [columnConfiguration, setColumnConfiguration] = useState(
     defaultConfiguration
@@ -66,15 +73,13 @@ const Table = (props: any) => {
         </thead>
         <tbody>
           {displayData.map((row: any, index: number) => (
-            <tr key={index}>
-              {columns.map((column: Column) => {
-                return typeof column.accessor === 'string' ? (
-                  <td key={column.name}>{row[column.accessor]}</td>
-                ) : (
-                  <td key={column.name}>{column.accessor(row)}</td>
-                )
-              })}
-            </tr>
+            <Row
+              expansionComponent={expansionComponent}
+              row={row}
+              columns={columns}
+              rowIndex={index}
+              key={index}
+            />
           ))}
         </tbody>
       </table>

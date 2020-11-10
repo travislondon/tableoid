@@ -56,5 +56,16 @@ export const Styles = {
     },
     searchContainer: {
         padding: 5
+    },
+    hiddenButton: {
+        border: 'none',
+        backgroundColor: 'transparent'
+    },
+    smallIcon: {
+        fontSize: 8
+    },
+    fullWidthCell: {
+        border: 'none',
+        width: '100%'
     }
 }

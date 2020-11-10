@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import useRestaurants from '../hooks/useRestaurants'
 import { Styles } from '../styles/Styles'
+import RestaurantDetail from './RestaurantDetail'
 import Search from './Search'
 import { ORDER } from './tables/data/ColumnConfiguration'
 import Table from './tables/Table'
@@ -31,6 +32,7 @@ const Restaurants = (props: any) => {
           order: ORDER.ASC,
           filters: []
         }}
+        expansionComponent={(data: any) => <RestaurantDetail data={data} />}
       />
     </div>
   )
