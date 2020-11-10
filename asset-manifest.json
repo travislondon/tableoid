@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/tableoid/static/css/main.64205b20.chunk.css",
+    "main.css": "/tableoid/static/css/main.6db94c59.chunk.css",
     "main.js": "/tableoid/static/js/main.210e857e.chunk.js",
     "main.js.map": "/tableoid/static/js/main.210e857e.chunk.js.map",
     "runtime-main.js": "/tableoid/static/js/runtime-main.a690d032.js",
@@ -10,14 +10,14 @@
     "static/js/3.78a9163e.chunk.js": "/tableoid/static/js/3.78a9163e.chunk.js",
     "static/js/3.78a9163e.chunk.js.map": "/tableoid/static/js/3.78a9163e.chunk.js.map",
     "index.html": "/tableoid/index.html",
-    "static/css/main.64205b20.chunk.css.map": "/tableoid/static/css/main.64205b20.chunk.css.map",
+    "static/css/main.6db94c59.chunk.css.map": "/tableoid/static/css/main.6db94c59.chunk.css.map",
     "static/js/2.590d36a2.chunk.js.LICENSE.txt": "/tableoid/static/js/2.590d36a2.chunk.js.LICENSE.txt",
     "static/media/tableoid.032f8441.png": "/tableoid/static/media/tableoid.032f8441.png"
   },
   "entrypoints": [
     "static/js/runtime-main.a690d032.js",
     "static/js/2.590d36a2.chunk.js",
-    "static/css/main.64205b20.chunk.css",
+    "static/css/main.6db94c59.chunk.css",
     "static/js/main.210e857e.chunk.js"
   ]
 }
