@@ -2,7 +2,8 @@ import background from '../images/tableoid.png'
 
 export const Styles = {
     siteContainer: {
-        background: `url(${background}) 50% 50% / contain no-repeat`,
+        background: `url(${background}) 50% 0% / contain no-repeat`,
+        backgroundPosition: 'center top',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -24,7 +25,7 @@ export const Styles = {
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column' as 'column',
-        top: '30vh',
+        top: '25vh',
         maxWidth: '50vw',
     },
     fontHeader: {
@@ -49,5 +50,11 @@ export const Styles = {
     },
     table: {
         backgroundColor: 'cornsilk',
+    },
+    searchInput: {
+        width: 250
+    },
+    searchContainer: {
+        padding: 5
     }
 }

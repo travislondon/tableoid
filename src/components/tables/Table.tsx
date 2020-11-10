@@ -1,29 +1,40 @@
 import React, { useState } from 'react'
 import { Styles } from '../../styles/Styles'
 import { Column } from './data/Column'
-import { ORDER } from './data/Order'
+import { ColumnFilter, ORDER } from './data/ColumnConfiguration'
 import HeaderColumn from './HeaderColumn'
 
 const Table = (props: any) => {
-  const { columns, data, defaultOrder, resultsPerPage } = props
+  const { columns, data, defaultConfiguration, resultsPerPage } = props
   const [page, setPage] = useState(1)
-  const [columnOrder, setColumnOrder] = useState(defaultOrder)
+  const [columnConfiguration, setColumnConfiguration] = useState(
+    defaultConfiguration
+  )
 
-  // filter data on header ordering, will need
-  // to change if other headers need to be orderable
-  // at the same time
+  // sort data on header ordering
   var orderedData = [...data]
-  if (columnOrder.column !== '' && columnOrder.order !== ORDER.NONE) {
+  if (
+    columnConfiguration.column !== '' &&
+    columnConfiguration.order !== ORDER.NONE
+  ) {
     orderedData.sort((a: any, b: any) => {
-      const column = columnOrder.column
-      return columnOrder.order === ORDER.ASC
+      const column = columnConfiguration.column
+      return columnConfiguration.order === ORDER.ASC
         ? a[column].localeCompare(b[column])
         : b.name.localeCompare(a[column])
     })
   }
 
+  // filter data on header filter values
+  var filteredData = [...orderedData]
+  columnConfiguration.filters.forEach((f: ColumnFilter) => {
+    filteredData = filteredData.filter((row: any) =>
+      row[f.column].toLowerCase().includes(f.filter.toLowerCase())
+    )
+  })
+
   // setup page information
-  const displayData = orderedData.slice(
+  const displayData = filteredData.slice(
     (page - 1) * resultsPerPage,
     (page - 1) * resultsPerPage + resultsPerPage
   )
@@ -36,7 +47,7 @@ const Table = (props: any) => {
     setPage(page - 1)
   }
 
-  const pages = Math.ceil(data.length / resultsPerPage)
+  const pages = Math.ceil(displayData.length / resultsPerPage)
 
   return (
     <>
@@ -46,8 +57,8 @@ const Table = (props: any) => {
             {columns.map((column: Column) => (
               <HeaderColumn
                 key={column.name}
-                setColumnOrder={setColumnOrder}
-                columnOrder={columnOrder}
+                setColumnConfiguration={setColumnConfiguration}
+                columnConfiguration={columnConfiguration}
                 column={column}
               />
             ))}
@@ -67,7 +78,7 @@ const Table = (props: any) => {
           ))}
         </tbody>
       </table>
-      <div style={{ ...Styles.horizontalFill, padding: 10 }}>
+      <div style={{ ...Styles.horizontalFill, padding: 5 }}>
         <button disabled={page === 1} onClick={() => prevPage()}>
           <i className='fas fa-chevron-left' />
         </button>

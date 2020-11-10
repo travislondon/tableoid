@@ -1,29 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useRestaurants from '../hooks/useRestaurants'
 import { Styles } from '../styles/Styles'
-import { ORDER } from './tables/data/Order'
+import Search from './Search'
+import { ORDER } from './tables/data/ColumnConfiguration'
 import Table from './tables/Table'
 
 const Restaurants = (props: any) => {
-  const restaurants = useRestaurants()
+  const [search, setSearch] = useState('')
+  const restaurants = useRestaurants(search)
 
   const columns = [
     { name: 'Name', sort: true, accessor: 'name' },
     { name: 'City', accessor: 'city' },
-    { name: 'State', accessor: 'state' },
-    { name: 'Genre', accessor: 'genre' }
+    { name: 'State', accessor: 'state', filter: true },
+    { name: 'Genre', accessor: 'genre', filter: true }
   ]
 
   return (
     <div style={Styles.tableContainer}>
-      <span style={{ ...Styles.bold, ...Styles.fontHeader }}>Selection</span>
+      <Search
+        updateSearchFilter={(val: string) => setSearch(val)}
+        search={search}
+      />
       <Table
         resultsPerPage={10}
         columns={columns}
         data={restaurants}
-        defaultOrder={{
+        defaultConfiguration={{
           column: 'name',
-          order: ORDER.ASC
+          order: ORDER.ASC,
+          filters: []
         }}
       />
     </div>

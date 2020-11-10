@@ -1,11 +1,12 @@
 import React from 'react'
-import { ORDER } from './data/Order'
+import { Styles } from '../../styles/Styles'
+import { ColumnFilter, ORDER } from './data/ColumnConfiguration'
 
 const HeaderColumn = (props: any) => {
-  const { column, setColumnOrder, columnOrder } = props
+  const { column, setColumnConfiguration, columnConfiguration } = props
 
   var icon = ''
-  switch (columnOrder.order) {
+  switch (columnConfiguration.order) {
     case ORDER.ASC:
       icon = 'fas fa-chevron-up'
       break
@@ -19,7 +20,7 @@ const HeaderColumn = (props: any) => {
 
   const toggleOrder = () => {
     var nextOrder = ORDER.NONE
-    switch (columnOrder.order) {
+    switch (columnConfiguration.order) {
       case ORDER.ASC:
         nextOrder = ORDER.NONE
         break
@@ -32,19 +33,41 @@ const HeaderColumn = (props: any) => {
       default:
         break
     }
-    setColumnOrder({ column: column.accessor, order: nextOrder })
+    setColumnConfiguration({
+      ...columnConfiguration,
+      column: column.accessor,
+      order: nextOrder
+    })
+  }
+
+  const updateColumnConfiguration = (value: string) => {
+    const otherFilters = columnConfiguration.filters.filter(
+      (f: ColumnFilter) => f.column !== column.accessor
+    )
+    const newConfig = {
+      ...columnConfiguration,
+      filters: [{ column: column.accessor, filter: value }, ...otherFilters]
+    }
+    setColumnConfiguration(newConfig)
   }
 
   return (
     <th>
-      {column.name}
-      {column.sort ? (
-        <i
-          onClick={() => toggleOrder()}
-          style={{ position: 'relative', padding: 5, top: 2 }}
-          className={'fas ' + icon}
-        />
-      ) : null}
+      <div style={Styles.columnContainer}>
+        {column.name}
+        {column.sort ? (
+          <i
+            onClick={() => toggleOrder()}
+            style={{ position: 'relative', padding: 5, top: 2 }}
+            className={'fas ' + icon}
+          />
+        ) : null}
+        {column.filter ? (
+          <input
+            onChange={(e: any) => updateColumnConfiguration(e.target.value)}
+          ></input>
+        ) : null}
+      </div>
     </th>
   )
 }
