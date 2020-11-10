@@ -53,7 +53,7 @@ const HeaderColumn = (props: any) => {
 
   return (
     <th>
-      <div style={Styles.columnContainer}>
+      <div style={Styles.horizontalFillCenter}>
         {column.name}
         {column.sort ? (
           <i

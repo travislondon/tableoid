@@ -83,7 +83,7 @@ const Table = (props: any) => {
           ))}
         </tbody>
       </table>
-      <div style={{ ...Styles.horizontalFill, padding: 5 }}>
+      <div style={{ ...Styles.horizontalFillSpaceAround, padding: 5 }}>
         <button disabled={page === 1} onClick={() => prevPage()}>
           <i className='fas fa-chevron-left' />
         </button>
