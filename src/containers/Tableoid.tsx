@@ -7,7 +7,6 @@ const Restaurant = (props: any) => {
   return (
     <SiteContainer>
       <div style={{ ...Styles.columnContainer, ...Styles.fixedWidthContainer }}>
-        <p style={{ ...Styles.bold, ...Styles.fontHeader }}>Selection</p>
         <Restaurants />
       </div>
     </SiteContainer>

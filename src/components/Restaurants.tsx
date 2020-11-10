@@ -1,7 +1,8 @@
 import React from 'react'
 import useRestaurants from '../hooks/useRestaurants'
 import { Styles } from '../styles/Styles'
-import Table from './Table'
+import { ORDER } from './tables/data/Order'
+import Table from './tables/Table'
 
 const Restaurants = (props: any) => {
   const restaurants = useRestaurants()
@@ -15,7 +16,16 @@ const Restaurants = (props: any) => {
 
   return (
     <div style={Styles.tableContainer}>
-      <Table columns={columns} data={restaurants} />
+      <span style={{ ...Styles.bold, ...Styles.fontHeader }}>Selection</span>
+      <Table
+        resultsPerPage={10}
+        columns={columns}
+        data={restaurants}
+        defaultOrder={{
+          column: 'name',
+          order: ORDER.ASC
+        }}
+      />
     </div>
   )
 }

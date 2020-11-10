@@ -6,7 +6,10 @@ const useRestaurants = () => {
     if(restaurants.length === 0) {
         getRestaurants().then(data => setRestaurants(data))
     }
-    return restaurants
+    return restaurants.map((r: any) => {
+        r.genre = r.genre.replaceAll(',', ', ')
+        return r
+    });
 }
 
 export default useRestaurants

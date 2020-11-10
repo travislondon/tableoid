@@ -19,10 +19,13 @@ export const Styles = {
         width: '75vw'
     },
     tableContainer: {
-        backgroundColor: 'cornsilk',
+        position: 'relative' as 'relative',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        flexDirection: 'column' as 'column',
+        top: '30vh',
+        maxWidth: '50vw',
     },
     fontHeader: {
         fontSize: 18
@@ -31,7 +34,11 @@ export const Styles = {
         fontWeight: 'bolder' as 'bolder'
     },
     horizontalFill: {
-        width: '100%'
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-around',
+        flexDirection: 'row' as 'row',
+        width: '100%',
     },
     iconButton: {
         borderStyle: 'none',
@@ -39,5 +46,8 @@ export const Styles = {
         backgroundColor: 'transparent',
         padding: 0,
         margin: 0
+    },
+    table: {
+        backgroundColor: 'cornsilk',
     }
 }
