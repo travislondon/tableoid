@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/tableoid/static/css/main.64205b20.chunk.css",
-    "main.js": "/tableoid/static/js/main.94365945.chunk.js",
-    "main.js.map": "/tableoid/static/js/main.94365945.chunk.js.map",
+    "main.js": "/tableoid/static/js/main.f49786fa.chunk.js",
+    "main.js.map": "/tableoid/static/js/main.f49786fa.chunk.js.map",
     "runtime-main.js": "/tableoid/static/js/runtime-main.ff853cf4.js",
     "runtime-main.js.map": "/tableoid/static/js/runtime-main.ff853cf4.js.map",
     "static/js/2.ead199b3.chunk.js": "/tableoid/static/js/2.ead199b3.chunk.js",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.ff853cf4.js",
     "static/js/2.ead199b3.chunk.js",
     "static/css/main.64205b20.chunk.css",
-    "static/js/main.94365945.chunk.js"
+    "static/js/main.f49786fa.chunk.js"
   ]
 }
