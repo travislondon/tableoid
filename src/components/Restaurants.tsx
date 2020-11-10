@@ -1,35 +1,21 @@
 import React from 'react'
+import useRestaurants from '../hooks/useRestaurants'
 import { Styles } from '../styles/Styles'
+import Table from './Table'
 
 const Restaurants = (props: any) => {
+  const restaurants = useRestaurants()
+
+  const columns = [
+    { name: 'Name', sort: true, accessor: 'name' },
+    { name: 'City', accessor: 'city' },
+    { name: 'State', accessor: 'state' },
+    { name: 'Genre', accessor: 'genre' }
+  ]
+
   return (
     <div style={Styles.tableContainer}>
-      <table>
-        <thead>
-          <tr>
-            <th>
-              Item Header One
-              <i
-                style={{ position: 'relative', padding: 5, top: 2 }}
-                className='fas fa-chevron-down'
-              />
-            </th>
-            <th>
-              Item Header Two
-              <i
-                style={{ position: 'relative', padding: 5, top: 2 }}
-                className='fas fa-chevron-down'
-              />
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Item One</td>
-            <td>Item Two</td>
-          </tr>
-        </tbody>
-      </table>
+      <Table columns={columns} data={restaurants} />
     </div>
   )
 }
